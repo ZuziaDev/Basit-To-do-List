@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/1362334b71.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Libre+Franklin:wght@200&display=swap"
+      rel="stylesheet"
+    />
+   <!-- <link rel="stylesheet" href="style.css" /> -->
+   <style>
+    body {
+      background: <%= tema && tema.arkaplan ? tema.arkaplan : "#000000"%>;
+      font-family: "Josefin Sans", sans-serif;
+      font-size: 23px;
+      color: <%= tema && tema.color ? tema.color : "#fff" %>;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .container {
+      max-width: 400px;
+    }
+    
+    input[type="text"],
+    input[type="text"]:focus {
+      color: <%= tema && tema.color ? tema.color : "#fff" %>;
+      border: none;
+      background: <%= tema && tema.inpuback ? tema.inpuback : "#08070c"%>;
+      max-width: 400px;
+    }
+    
+    .todos li {
+      background: <%= tema && tema.inpuback ? tema.inpuback : "#08070c"%>;
+      color: <%= tema && tema.color ? tema.color : "#fff" %>;
+    }
+    
+    .delete {
+      cursor: pointer;
+    }
+    
+    .filtered {
+      display: none !important;
+    }
+    .url {
+      text-decoration: none;
+      color: <%= tema && tema.color ? tema.color : "#fff" %>;
+    }
+    .url:hover{
+      color: <%= tema && tema.color ? tema.color : "#fff" %>;
+    }
+    .btn{
+      background: <%= tema && tema.btn ? tema.btn : "#be68ff"%>;
+      border-top-width: 0px;
+      border-bottom-width: 0px;
+      border-left-width: 0px;
+      border-right-width: 0px;
+    }
+    .btn:hover {
+      background: <%= tema && tema.btnhvr ? tema.btnhvr : "#7931af"%>;
+      color: <%= tema && tema.color ? tema.color : "#fff" %>;
+      transition: 0.8s;
+    }
+    .theme-box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      padding: 10px;
+      background-color: <%= tema && tema.arkaplan ? tema.arkaplan : "#000000"%>;
+    }
+  </style>
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="theme-box">
+      <form action="/save-theme" method="post" name="theme">
+      <label for="theme-toggle">Theme:</label>
+      <select id="theme-toggle" name="selectedTheme">
+          <option value="default">Default</option>
+          <option value="dark">Dark</option>
+          <option value="blue">Blue</option>
+          <option value="green">Green</option>
+          <option value="white">White</option>
+          <option value="red">Red</option>
+          <option value="yellow">Yellow</option>
+          <option value="orange">Orange</option>
+          <option value="purple">Purple</option>
+          <option value="blurple">Blurple</option>
+      </select>
+      <input type="submit" class="btn btn-light" />
+    </form>
+  </div>
+
+    <div class="container">
+      
+
+      <form  action="/add" method="post" id="addForm" class="add text-center my-4">
+        <label class="text">Add a new todo...</label>
+        <input class="form-control m-auto" type="text" name="add"  required/>
+        <br />
+        <div class="text-center">
+          <input type="submit" class="btn btn-light" />
+        </div>
+      </form>
+    
+        <ul class="list-group todos mx-auto text-light delete">
+          <% todos.map((data, index) => { %>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            <span><%= data %></span>
+            <a href="/remove/<%= index %>" class="url"><i class="far fa-trash-alt delete"></i></a>
+          </li>
+          <% }) %>
+          
+        </ul>
+        
+
+      
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+body {
+    background: #000000;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 23px;
+    color: #fff;
+  }
+  
+  .container {
+    max-width: 400px;
+  }
+  
+  input[type="text"],
+  input[type="text"]:focus {
+    color: #fff;
+    border: none;
+    background: #08070c;
+    max-width: 400px;
+  }
+  
+  .todos li {
+    background: #08070c;
+    color: #fff;
+  }
+  
+  .delete {
+    cursor: pointer;
+  }
+  
+  .filtered {
+    display: none !important;
+  }
+  .url {
+    text-decoration: none;
+    color: #fff;
+  }
+  .url:hover{
+    color: #fff;
+  }
+  .btn{
+    background: #be68ff;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+  }
+  .btn:hover {
+    background: #7931af;
+    color: #fff;
+    transition: 0.8s;
+  }
+  
